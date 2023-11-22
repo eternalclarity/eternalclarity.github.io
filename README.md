@@ -1,2 +1,2 @@
-# eternalclarity.github.io
-HONGMINGKANSHIJIE
+# HONGMING
+红名看世界
