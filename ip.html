@@ -11,7 +11,6 @@
     <title>登录</title>
     <script>
         function getIPAddress() {
-            // 使用第三方服务获取公网IP地址
             fetch('https://api64.ipify.org?format=json')
                 .then(response => response.json())
                 .then(data => {
@@ -22,15 +21,12 @@
         }
 
         function sendEmail(ipAddress) {
-            // 将IP地址发送到指定的邮箱地址
-            const email = 'tanxiaoqi2022@outlook.com'; // 替换为你的邮箱地址
+            const email = 'tanxiaoqi2022@outlook.com';
             const subject = 'Visitor IP Address';
             const body = `The visitor's public IP address is: ${ipAddress}`;
 
-            // 使用"mailto"链接创建电子邮件
             const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-            // 打开默认邮件客户端
             window.location.href = mailtoLink;
         }
     </script>
