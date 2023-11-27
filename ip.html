@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">                                       
+		<link href="bootstrap.css" rel="stylesheet">
+		<script src="jquery-1.11.2.js"></script>
+		<script src="bootstrap.js"></script>
+    <title>登录</title>
+    <script>
+        function getIPAddress() {
+            // 使用第三方服务获取公网IP地址
+            fetch('https://api64.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const ipAddress = data.ip;
+                    sendEmail(ipAddress);
+                })
+                .catch(error => console.error('Error fetching IP address:', error));
+        }
+
+        function sendEmail(ipAddress) {
+            // 将IP地址发送到指定的邮箱地址
+            const email = 'tanxiaoqi2022@outlook.com'; // 替换为你的邮箱地址
+            const subject = 'Visitor IP Address';
+            const body = `The visitor's public IP address is: ${ipAddress}`;
+
+            // 使用"mailto"链接创建电子邮件
+            const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            // 打开默认邮件客户端
+            window.location.href = mailtoLink;
+        }
+    </script>
+</head>
+<body>
+		<div class="container-fluid" style="margin-top: 200px">
+			<div class="jumbotron">
+				<div class="container">
+					<div class="page-header">
+						<h2>一键登录<small>Modal</small></h2>
+					</div>
+					<button class="btn btn-success" data-toggle="modal" data-target="#myModal">登录</button>
+				</div>
+			</div>
+			
+			
+			<div class="modal fade" id="myModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="btn-info modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4>登录</h4>
+						</div>
+						<div class="modal-body">
+							<form role="form">
+								<div class="form-group has-feedback">
+									<label class="control-label">用户名</label>
+									<div class="input-group has-error">
+										<input type="text" class="form-control" placeholder="请输入您的用户名">
+										<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+									</div>
+									<span class="text-danger">用户名不能为空!</span>
+								</div>
+								<div class="form-group has-feedback">
+									<label class="control-label">密码</label>
+									<div class="input-group has-error">
+										<input class="form-control" type="password" placeholder="请输入您的密码">
+										<span class="glyphicon glyphicon-remove form-control-feedback"></span> 
+									</div>
+									<span class="text-danger">密码错误！</span>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-info"><a href="success.html" class="btn-info">登录</a></button>
+							<button class="btn btn-default" data-dismiss="modal">取消</button>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
