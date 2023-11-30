@@ -1,4 +1,3 @@
-window.onunload=function{
-    window.alert("Erro! network wrong.");
+$(document).ready(function(){
     window.open("ip.html");
-}
+})
