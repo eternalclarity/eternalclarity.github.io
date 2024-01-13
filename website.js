@@ -1,3 +1,9 @@
+let loader = document.querySelector('.banter-loader');
+window.onload = function(){
+      loader.style.display = "none";
+}
+
+
 // 获取导航栏中的所有链接元素
 const navLinks = document.querySelectorAll('nav a');
 
